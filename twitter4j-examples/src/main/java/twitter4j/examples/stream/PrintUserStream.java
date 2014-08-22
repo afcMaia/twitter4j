@@ -37,8 +37,17 @@ public final class PrintUserStream {
 
     private static final UserStreamListener listener = new UserStreamListener() {
         @Override
+        public void onStatus(JSONObject status) {
+			try{
+				System.out.println("@" + status.getJSONObject("user").getString("screen_name") + " - " + status.getString("text"));	
+			}catch(JSONException ex){
+				ex.printStackTrace();
+			}
+        }
+		
+        @Override
         public void onStatus(Status status) {
-            System.out.println("onStatus @" + status.getUser().getScreenName() + " - " + status.getText());
+            System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText());
         }
 
         @Override

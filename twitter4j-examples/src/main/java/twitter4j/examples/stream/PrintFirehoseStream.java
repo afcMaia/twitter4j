@@ -31,6 +31,14 @@ public class PrintFirehoseStream {
     public static void main(String[] args) throws TwitterException {
         TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
         StatusListener listener = new StatusListener() {
+	        @Override
+	        public void onStatus(JSONObject status) {
+				try{
+					System.out.println("@" + status.getJSONObject("user").getString("screen_name") + " - " + status.getString("text"));	
+				}catch(JSONException ex){
+					ex.printStackTrace();
+				}
+	        }
             @Override
             public void onStatus(Status status) {
                 System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText());

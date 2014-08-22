@@ -22,6 +22,10 @@ package twitter4j;
  */
 public class StatusAdapter implements StatusListener {
     @Override
+    public void onStatus(JSONObject status) {
+    }
+	
+    @Override
     public void onStatus(Status status) {
     }
 

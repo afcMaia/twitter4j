@@ -21,6 +21,8 @@ package twitter4j;
  * @since Twitter4J 2.0.4
  */
 public interface StatusListener extends StreamListener {
+	void onStatus(JSONObject status);
+	
     void onStatus(Status status);
 
     /**
