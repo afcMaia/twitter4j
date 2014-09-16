@@ -225,6 +225,14 @@ public class UserStreamTest extends TwitterTestBase implements UserStreamListene
         Assert.assertNotNull(TwitterObjectFactory.getRawJSON(status));
         notifyResponse();
     }
+	
+    @Override
+    public void onStatus(JSONObject status) {
+        System.out.println("onStatus");
+        received.add(new Object[]{UPDATE_STATUS, status});
+        Assert.assertNotNull(status);
+        notifyResponse();
+    }
 
     @Override
     public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {

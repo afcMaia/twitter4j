@@ -332,6 +332,22 @@ public class StreamAPITest extends TwitterTestBase implements StatusListener, Co
 //        System.out.println(status.getCreatedAt() + ":" + status.getText() + " from:" + status.getSource());
         notifyResponse();
     }
+	
+	JSONObject statusJson;
+    public void onStatus(JSONObject statusJson) {
+        this.statusJson = statusJson;
+        try {
+            assertNotNull(statusJson);
+            // Status statusFromJSON = TwitterObjectFactory.createStatus(json);
+//             assertEquals(status, statusFromJSON);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        System.out.println("got status from stream:" + status.toString());
+        // assertNotNull(status.getText());
+//        System.out.println(status.getCreatedAt() + ":" + status.getText() + " from:" + status.getSource());
+        notifyResponse();
+    }
 
     StatusDeletionNotice deletionNotice;
 
